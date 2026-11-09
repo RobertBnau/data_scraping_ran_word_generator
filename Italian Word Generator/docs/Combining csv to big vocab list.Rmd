@@ -1,0 +1,50 @@
+---
+title: "Italian Word Generator"
+author: "Robert Beelman"
+date: "2026-11-05"
+output: pdf_document
+---
+
+```{r, include=FALSE}
+library(tidyverse)
+```
+
+Load the csv from quizlet.
+```{r}
+A1 <- read.csv("~/Italian Word Generator/Italian Word Generator/data-raw/senteri_A1.csv")
+B1 <- read.csv("~/Italian Word Generator/Italian Word Generator/data-raw/senteri_B1.csv")
+A2 <- read.csv("~/Italian Word Generator/Italian Word Generator/data-raw/senteri_A2.csv")
+B2 <- read.csv("~/Italian Word Generator/Italian Word Generator/data-raw/senteri_B2.csv")
+A3 <- read.csv("~/Italian Word Generator/Italian Word Generator/data-raw/senteri_A3.csv")
+B3 <- read.csv("~/Italian Word Generator/Italian Word Generator/data-raw/senteri_B3.csv")
+A4 <- read.csv("~/Italian Word Generator/Italian Word Generator/data-raw/senteri_A4.csv")
+```
+
+Bind the above into a complete data file and save.
+```{r}
+italian_vocab <-
+  A1 %>%
+  rbind(B1) %>%
+  rbind(A2) %>%
+  rbind(B2) %>%
+  rbind(A3) %>%
+  rbind(B3) %>%
+  rbind(A4)
+
+save(italian_vocab, file="~/Italian Word Generator/Italian Word Generator/data/italian_vocab_list.rda")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
