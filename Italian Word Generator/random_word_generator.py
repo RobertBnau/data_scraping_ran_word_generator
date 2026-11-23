@@ -17,49 +17,55 @@ def main():
 
 # Define translator method, whether Italian to English or vise versa
 def translator_method():
-    language = input("\'eng\' for E -> I, \'ita\' for I -> E, or anything else to quit: ")
+    language = input("Type \'eng\' for E -> I, \'ita\' for I -> E, or anything else to quit: ")
     print()
     generator(language)
 
 # Define random generator based on translator method
 def generator(ie):
+    sentinel = "s"
+
     # Random Word Generator for Italian to English
     if ie == "ita":
-        play = True
-
-        while play == True:
+        
+        while sentinel != "q":
             word = random.choice(vocab.index)
             
             print("Italian:", vocab.loc[word, "Italian"])
-            input("When ready for English, type \'r\': ")
+            input("When ready for English, press \'enter\': ")
             print("English:", vocab.loc[word, "English"])
-            quest = input("'r' for next word: ")
+            # Type 'r' for next term or anything else to quit
+            quest = input("Press \'enter\' for next word or \'q\' to quit: ")
 
-            if quest == "r":
-                print()
-                print("Next word:")
+            if quest == "q":
+                sentinel = quest
+
             else:
-                play = False
+                print()
+                print("Next,")
+
 
         else:
             print("Good job studying!")
 
     # Random Word Generator for English to Italian            
     elif ie == "eng":
-        play = True
 
-        while play == True:
+        while sentinel != "q":
             word = random.choice(vocab.index)
             
             print("English:", vocab.loc[word, "English"])
-            input("When ready for Italian, type \'r\': ")
+            input("When ready for Italian, type \'enter\': ")
             print("Italian:", vocab.loc[word, "Italian"])
-            quest = input("'r' for next word: ")
-            if quest == "r":
-                print()
-                print("Next word")
+            quest = input("Press \'enter\' for next word or \'q\' to quit: ")
+
+            if quest == "q":
+                sentinel = quest
+
             else:
-                play = False
+                print()
+                print("Next,")
+            
         else:
             print("Good job studying!")
 
